@@ -130,5 +130,8 @@ dist
 .pnp.*
 
 
-# Jetbrains
 .idea/
+src/server/public/
+src/client/assets/styles/*.css
+src/client/assets/styles/*.css.map
+

@@ -30,7 +30,7 @@ const getFilesByHashManifest = hashManifest => {
     };
 
   return {
-    mainStylesLocation: `${hashManifest["main.css"]}`,
+    mainStylesLocation: `${hashManifest["vendors.css"]}`,
     mainBuildLocation: `${hashManifest["main.js"]}`,
     vendorScriptHtml: `<script src="${hashManifest["vendors.js"]}" type="text/javascript"></script>`
   };
@@ -68,7 +68,6 @@ const renderFullPage = (location, store, hashManifest) => {
 
 const getPreloadRequestsPromises = (path, store) => {
   const matchedRoutes = matchRoutes(routes, path);
-  console.log("matchedRoutes", matchedRoutes);
   return matchedRoutes?.map(({ route }) => route.onLoad?.(store));
 };
 

@@ -21,7 +21,7 @@ const setupDevelopmentServer = app => {
 
 const setupProductionServer = app => {
   app.use(requireManifest);
-  app.use(express.static(`${__dirname}/public`));
+  app.use(express.static(`${__dirname}/../public`));
 
   // Middlewares to improve security
   app.use(helmet.permittedCrossDomainPolicies());

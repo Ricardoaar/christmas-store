@@ -1,0 +1,14 @@
+$background-halloween-color: #1a1919;
+$primary-halloween-color: #FFA500;
+$secondary-halloween-color: #663399;
+$accent-halloween-color: #00FF00;
+$text-halloween-color: #FFFFFF;
+$background-halloween-gradient: linear-gradient(to right, $primary-halloween-color, #000000);
+
+
+$background-christmas-color: #00FF00;
+$primary-christmas-color: #FF0000;
+$secondary-christmas-color: #F9A602;
+$accent-christmas-color: #C0C0C0;
+$text-christmas-color: #FFFFFF;
+$background-christmas-gradient: linear-gradient(to right, $primary-christmas-color, $accent-christmas-color);

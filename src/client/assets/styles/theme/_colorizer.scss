@@ -1,0 +1,26 @@
+$colorized-classes: 'bg', 'text', 'border';
+$classes-properties-matcher: (bg: background-color, text: color, border: border-color);
+$colors: 'primary', 'secondary', 'accent', 'light';
+
+
+@each $color in $colors {
+  @each $class, $property in $classes-properties-matcher {
+    .#{$class}-#{$color} {
+      @include within-theme($themes) {
+        #{$property}: with-theme($color);
+      }
+    }
+  }
+}
+
+.general-background {
+  @include within-theme($themes) {
+    background-color: with-theme(background);
+  }
+}
+
+.background-gradient {
+  @include within-theme($themes) {
+    background: with-theme(background-gradient);
+  }
+}

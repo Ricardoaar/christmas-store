@@ -1,8 +1,8 @@
 export const THEMES = {
-  light: "theme-light",
-  dark: "theme-dark"
+  christmas: "theme-christmas",
+  halloween: "theme-halloween"
 };
 export const initialThemeState = {
-  theme: THEMES.light,
+  theme: THEMES.christmas,
   setTheme: () => null
 };

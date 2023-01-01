@@ -6,7 +6,8 @@ export const AppContent = () => {
   return (
     <>
       <ThemeSetter />
-      <div className="myClass">
+
+      <div className="bg-primary">
         <h1>Hello World</h1>
       </div>
     </>

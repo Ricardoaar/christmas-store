@@ -1,14 +1,19 @@
-@mixin define-themes($themes) {
+@mixin within-theme($themes) {
   @each $theme, $map in $themes {
     .theme-#{$theme} & {
       $theme-map: () !global;
+
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
-        @debug $theme-map;
       }
+
       @content;
       $theme-map: null !global;
     }
   }
+}
+
+@function with-theme($key) {
+  @return map-get($theme-map, $key);
 }

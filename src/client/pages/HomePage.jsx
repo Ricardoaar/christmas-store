@@ -7,7 +7,7 @@ export const AppContent = () => {
     <>
       <ThemeSetter />
 
-      <div className="bg-primary">
+      <div className="background-gradient">
         <h1>Hello World</h1>
       </div>
     </>

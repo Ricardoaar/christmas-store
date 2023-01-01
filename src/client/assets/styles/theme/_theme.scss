@@ -1,19 +1,18 @@
 $themes: (
         christmas: (
-                background:$background-christmas-color,
                 primary:$primary-christmas-color,
                 secondary:$secondary-christmas-color,
                 accent:$accent-christmas-color,
-                text:$text-christmas-color,
+                content:$content-christmas-color,
                 background-gradient:$background-christmas-gradient,
         ),
         halloween: (
-                background:$background-halloween-color,
                 primary:$primary-halloween-color,
                 secondary:$secondary-halloween-color,
                 accent:$accent-halloween-color,
-                text:$text-halloween-color,
+                content:$content-halloween-color,
                 background-gradient:$background-halloween-gradient,
         ),
 );
 
+$colors: 'primary', 'secondary', 'accent', 'content';

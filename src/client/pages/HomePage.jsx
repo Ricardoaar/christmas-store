@@ -1,18 +1,34 @@
-import React from "react";
-import Card from "@components/Card";
+import React, { useContext } from "react";
+import { ThemeContext } from "@client/context/ThemeContext/ThemeContextProvider";
+import { THEMES } from "@client/context/ThemeContext/ThemeContext.constants";
 
-const HomePage = () => {
+export const AppContent = () => {
   return (
     <>
-      <div>
-        <Card />
-        <h1>Start project from react </h1>
-        <button onClick={() => console.log("You're clicking me")}>
-          This is a component in react, click it!
-        </button>
+      <ThemeSetter />
+      <div className="myClass">
+        <h1>Hello World</h1>
       </div>
     </>
   );
+};
+
+export const ThemeSetter = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  return (
+    <select value={theme} onChange={e => setTheme(e.currentTarget.value)}>
+      {Object.values(THEMES).map((option, idx) => (
+        <option value={option} key={idx}>
+          {option}
+        </option>
+      ))}
+    </select>
+  );
+};
+
+const HomePage = () => {
+  return <AppContent />;
 };
 
 export default HomePage;

@@ -1,14 +1,19 @@
+// Libraries
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 
+// Components
 import { AppRoutes } from "@client/routing/AppRoutes";
+import { ThemeContextProvider } from "@client/context/ThemeContext";
 
 const buildInitialReactAsHtml = location => {
   return renderToString(
-    <StaticRouter location={location} context={{}}>
-      <AppRoutes />
-    </StaticRouter>
+    <ThemeContextProvider>
+      <StaticRouter location={location} context={{}}>
+        <AppRoutes />
+      </StaticRouter>
+    </ThemeContextProvider>
   );
 };
 

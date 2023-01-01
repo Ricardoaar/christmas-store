@@ -1,0 +1,30 @@
+@import "mixins";
+// _theme.scss
+$light-text-color: white;
+$dark-text-color: black;
+$my-class-bg-light: white;
+$my-class-bg-dark: black;
+
+$themes: (
+        light: (
+                background: $my-class-bg-light,
+                text-color: $dark-text-color,
+        ),
+        dark: (
+                background: $my-class-bg-dark,
+                text-color: $light-text-color,
+        ),
+);
+
+
+@function with-theme($key) {
+  @return map-get($theme-map, $key);
+}
+
+// usage
+.myClass {
+  @include define-themes($themes) {
+    background: with-theme("background");
+    color: with-theme("text-color");
+  }
+}

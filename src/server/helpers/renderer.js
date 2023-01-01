@@ -4,8 +4,12 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 
 // Components
-import { AppRoutes } from "@client/routing/AppRoutes";
+import { AppRoutes, routes } from "@client/routing/AppRoutes";
 import { ThemeContextProvider } from "@client/context/ThemeContext";
+import { configureStore } from "@reduxjs/toolkit";
+import { combinedReducers } from "@client/redux";
+import thunk from "redux-thunk";
+import { matchRoutes } from "react-router-dom";
 
 const buildInitialReactAsHtml = location => {
   return renderToString(
@@ -32,10 +36,17 @@ const getFilesByHashManifest = hashManifest => {
   };
 };
 
+const generateSecurePreloadedState = store => {
+  const preloadedState = store.getState();
+  return JSON.stringify(preloadedState).replace(/</g, "\\u003c");
+};
+
 const renderFullPage = (location, store, hashManifest) => {
-  const reactHtml = buildInitialReactAsHtml(location, store);
+  const view = buildInitialReactAsHtml(location, store);
+
   const { mainStylesLocation, mainBuildLocation, vendorScriptHtml } =
     getFilesByHashManifest(hashManifest);
+  const preloadedState = generateSecurePreloadedState(store);
 
   return `
       <html lang="en">
@@ -44,7 +55,10 @@ const renderFullPage = (location, store, hashManifest) => {
         <link rel="stylesheet" href="${mainStylesLocation}">
       </head>
       <body>
-        <div id="root">${reactHtml}</div>
+      <script>
+          window.__PRELOADED_STATE__ = ${preloadedState};
+        </script>
+        <div id="root">${view}</div>
         <script src="${mainBuildLocation}" type="text/javascript"></script>
         ${vendorScriptHtml}
       </body>
@@ -52,6 +66,23 @@ const renderFullPage = (location, store, hashManifest) => {
     `;
 };
 
+const getPreloadRequestsPromises = (path, store) => {
+  const matchedRoutes = matchRoutes(routes, path);
+  console.log("matchedRoutes", matchedRoutes);
+  return matchedRoutes?.map(({ route }) => route.onLoad?.(store));
+};
+
 export const renderApp = (req, res) => {
-  res.send(renderFullPage(req.path, req.hashManifest));
+  const store = configureStore({
+    reducer: combinedReducers,
+    middleware: [thunk]
+  });
+
+  const preloadedRequestsPromises = getPreloadRequestsPromises(req.path, store);
+
+  if (preloadedRequestsPromises?.length >= 1) {
+    Promise.all(preloadedRequestsPromises).then(() => {
+      res.send(renderFullPage(req.url, store, req.hashManifest));
+    });
+  } else res.send(renderFullPage(req.path, store, req.hashManifest));
 };

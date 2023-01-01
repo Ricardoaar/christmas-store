@@ -4,6 +4,7 @@ import { useRoutes } from "react-router-dom";
 
 // Components
 import HomePage from "../pages/HomePage";
+import { fetchUsersData } from "@client/redux/reducers/products/actions";
 
 /*
  * This is the main routing file for the application.
@@ -17,7 +18,8 @@ export const routes = [
   {
     path: "/",
     exact: true,
-    element: <HomePage />
+    element: <HomePage />,
+    onLoad: store => store.dispatch(fetchUsersData())
   }
 ];
 

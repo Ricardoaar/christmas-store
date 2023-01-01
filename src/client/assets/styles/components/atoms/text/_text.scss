@@ -1,0 +1,13 @@
+@import "constants";
+
+@each $key, $size in $font-sizes {
+  .text--#{$key} {
+    font-size: $size;
+  }
+}
+
+@each $key, $weight in $font-weights {
+  .text--#{$key} {
+    font-weight: $weight;
+  }
+}

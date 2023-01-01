@@ -27,5 +27,5 @@ const config = {
     })
   ]
 };
-console.log({ baseConfig: baseConfig.resolve.alias });
+
 module.exports = merge(baseConfig, config);

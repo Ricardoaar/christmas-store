@@ -7,5 +7,19 @@
         "runtime": "automatic"
       }
     ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@components": "./src/client/components",
+          "@pages": "./src/client/pages",
+          "@utils": "./src/utils",
+          "@styles": "./src/client/assets/styles",
+          "@client": "./src/client"
+        }
+      }
+    ]
   ]
 }

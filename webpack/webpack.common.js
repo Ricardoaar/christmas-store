@@ -1,4 +1,7 @@
 const { loader: miniCssExtractLoader } = require("mini-css-extract-plugin");
+
+const path = require("path");
+
 module.exports = {
   module: {
     rules: [
@@ -27,7 +30,11 @@ module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx"],
     alias: {
-      // To create when full folder structure is ready
+      "@components": path.resolve(__dirname, "../src/client/components"),
+      "@pages": path.resolve(__dirname, "../src/client/pages"),
+      "@styles": path.resolve(__dirname, "../src/client/assets/styles"),
+      "@assets": path.resolve(__dirname, "../src/client/assets"),
+      "@client": path.resolve(__dirname, "../src/client")
     }
   }
 };

@@ -1,7 +1,7 @@
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 
-import { AppRoutes } from "../../client/routing/AppRoutes";
+import { AppRoutes } from "@client/routing/AppRoutes";
 import React from "react";
 
 const buildInitialReactAsHtml = location => {

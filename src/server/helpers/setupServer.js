@@ -50,5 +50,6 @@ export const setupServerByEnv = (app, env = "development") => {
     );
 
   const setupServer = setups[env] || setups["production"];
+
   return setupServer(app);
 };

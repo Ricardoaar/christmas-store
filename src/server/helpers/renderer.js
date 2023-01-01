@@ -5,7 +5,7 @@ import { StaticRouter } from "react-router-dom/server";
 
 // Components
 import { AppRoutes, routes } from "@client/routing/AppRoutes";
-import { ThemeContextProvider } from "@client/context/ThemeContext";
+import { ThemeContextProvider } from "@client/Theme/context/ThemeContext";
 import { configureStore } from "@reduxjs/toolkit";
 import { combinedReducers } from "@client/redux";
 import thunk from "redux-thunk";

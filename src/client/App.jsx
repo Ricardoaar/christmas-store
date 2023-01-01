@@ -6,7 +6,7 @@ import { createBrowserHistory } from "history";
 import { configureStore } from "@reduxjs/toolkit";
 
 // Components
-import { ThemeContextProvider } from "@client/context/ThemeContext";
+import { ThemeContextProvider } from "@client/./Theme/context/ThemeContext";
 import { AppRoutes } from "@client/routing/AppRoutes";
 
 // Utils & Redux

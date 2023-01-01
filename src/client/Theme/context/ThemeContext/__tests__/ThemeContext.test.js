@@ -3,15 +3,9 @@ import PropTypes from "prop-types";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 
-import {
-  ThemeContext,
-  ThemeContextProvider
-} from "@client/context/ThemeContext";
+import { ThemeContext, ThemeContextProvider } from "../index";
 
-import {
-  initialThemeState,
-  THEMES
-} from "@client/context/ThemeContext/ThemeContext.constants";
+import { initialThemeState, THEMES } from "../ThemeContext.constants";
 
 const testProps = {
   nextThemeName: PropTypes.string

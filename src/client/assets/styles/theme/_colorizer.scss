@@ -3,16 +3,15 @@ $colorized-classes: 'bg', 'text', 'border';
 $classes-properties-matcher: (bg: background-color, text: color, border: border-color);
 
 
-//
-//@each $color in $colors {
-//  @each $class, $property in $classes-properties-matcher {
-//    .#{$class}-#{$color} {
-//      @include within-theme($themes) {
-//        #{$property}: with-theme($color);
-//      }
-//    }
-//  }
-//}
+@each $color in $theme-colors {
+  @each $class, $property in $classes-properties-matcher {
+    .#{$class}--#{$color} {
+      @include within-theme($themes) {
+        #{$property}: with-theme($color);
+      }
+    }
+  }
+}
 
 
 .main-background {

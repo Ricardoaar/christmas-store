@@ -1,2 +1,3 @@
-@import "utilities/reset", "utilities/variables";
-@import "theme/theme", "theme/mixins", "theme/colorizer";
+@import "utilities/reset";
+@import "theme/constants", "theme/mixins", "theme/colorizer";
+@import "components/components";

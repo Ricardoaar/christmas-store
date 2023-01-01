@@ -1,10 +1,7 @@
 import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 
-import {
-  initialThemeState,
-  THEMES
-} from "@client/context/ThemeContext/ThemeContext.constants";
+import { initialThemeState, THEMES } from "./ThemeContext.constants";
 
 export const ThemeContext = React.createContext(initialThemeState);
 

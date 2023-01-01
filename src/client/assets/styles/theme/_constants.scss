@@ -1,3 +1,17 @@
+$primary-halloween-color: #FF6E31;
+$secondary-halloween-color: #540375;
+$accent-halloween-color: #FFFFFF;
+$content-halloween-color: #FFFFFF;
+$background-halloween-gradient: linear-gradient(180deg, #FF6E31 0%, rgba(255, 110, 49, 0.76) 100%);
+
+
+$primary-christmas-color: #EB455F;
+$secondary-christmas-color: #2B3467;
+$accent-christmas-color: #C9EBF2;
+$content-christmas-color: #FFFFFF;
+$background-christmas-gradient: linear-gradient(180deg, #EB454F 0%, #FF8E8E 100%);
+
+
 $themes: (
         christmas: (
                 primary:$primary-christmas-color,
@@ -15,4 +29,4 @@ $themes: (
         ),
 );
 
-$colors: 'primary', 'secondary', 'accent', 'content';
+$theme-colors: ('primary', 'secondary', 'accent', 'content');

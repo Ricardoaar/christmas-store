@@ -30,9 +30,22 @@ $max-body-normal-height: 25rem;
     }
 
     &.card--normal {
-      max-width: 300px;
-      grid-template-columns:minmax(0, 100px) minmax(0, 300px);
-      grid-template-rows: minmax(0, $max-footer-normal-height + $max-body-normal-height) minmax(0, $max-footer-normal-height);
+      max-width: 400px;
+      grid-template-columns:auto;
+      grid-template-rows:auto;
+
+      .card__body {
+        max-height: 300px;
+      }
+
+      .card__header {
+        max-height: 300px;
+      }
+
+      .card__footer {
+        max-height: 200px;
+      }
+
     }
 
     &.card--fit {
@@ -52,8 +65,22 @@ $max-body-normal-height: 25rem;
 
     &.card--normal {
       max-width: 300px;
-      grid-template-rows: minmax(0, $max-header-normal-height) minmax(0, $max-body-normal-height) minmax(0, $max-footer-normal-height);
+      grid-template-rows: auto;
+
+      .card__body {
+        max-height: 300px;
+      }
+
+      .card__header {
+        max-height: 100px;
+      }
+
+      .card__footer {
+        max-height: 200px;
+      }
+
     }
+
 
   }
 
@@ -125,7 +152,13 @@ $max-body-normal-height: 25rem;
   }
 
 
-  transform: scale(1) translateX(0) translateY(0);
+  transform: scale (
+          1
+  ) translateX (
+          0
+  ) translateY (
+          0
+  );
   transition: all 0.6s ease-in-out;
 
   &:hover {
@@ -133,5 +166,6 @@ $max-body-normal-height: 25rem;
     transition: all 0.6s ease-in-out;
     box-shadow: 0 6px 6px 4px rgba(0, 0, 0, 0.2);
   }
+
 
 }

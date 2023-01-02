@@ -3,7 +3,7 @@ import React from "react";
 import { useRoutes } from "react-router-dom";
 
 // Components
-import HomePage from "../pages/HomePage";
+import HomePage from "@pages/HomePage/HomePage";
 import { fetchUsersData } from "@client/redux/reducers/products/actions";
 
 /*

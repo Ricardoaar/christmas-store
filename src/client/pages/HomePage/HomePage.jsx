@@ -8,13 +8,14 @@ import Heading from "@components/molecules/Heading/Heading";
 import Card from "@components/atoms/Card/Card";
 import Text from "@components/atoms/Text/Text";
 import Stack from "@components/layouts/Stack/Stack";
-import { stackSpacingCLasses } from "@components/layouts/Stack/Stack.types";
+import { StackTypes } from "@components/layouts/Stack/Stack.types";
+import Header from "@pages/shared/Header/Header";
 
 export const AppContent = () => {
   const [direction, setDirection] = React.useState("horizontal");
 
   return (
-    <Stack type={stackSpacingCLasses.xWide} direction={"horizontal"}>
+    <Stack type={StackTypes.xWide} direction={direction}>
       <ThemeSetter />
       <TextInput
         size={"sm"}
@@ -24,7 +25,9 @@ export const AppContent = () => {
         placeholder={"Search"}
       />
       <ComplexIcon icon={"envelope"} color={"primary"} />
-      <Heading size={"xxl"} level={2} weight={"bold"}></Heading>
+      <Heading size={"xxl"} level={2} weight={"bold"}>
+        Cats are amazing
+      </Heading>
       <Card direction={direction}>
         <Card.Header>
           <Text tag={"h3"} size={"xxl"}>
@@ -92,7 +95,12 @@ export const ThemeSetter = () => {
 };
 
 const HomePage = () => {
-  return <AppContent />;
+  return (
+    <>
+      <Header />
+      <AppContent />;
+    </>
+  );
 };
 
 export default HomePage;

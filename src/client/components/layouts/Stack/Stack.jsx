@@ -1,14 +1,15 @@
 import React, { useMemo } from "react";
 import generateClassName from "@client/utils/classNameGenerator";
 import {
-  stackPropTypes,
-  stackSpacingCLasses
+  StackDirections, stackPropTypes,
+  StackTypes
 } from "@components/layouts/Stack/Stack.types";
 
 function Stack({
   children,
-  direction = "horizontal",
-  type = stackSpacingCLasses.normal
+  direction = StackDirections.vertical,
+  type = StackTypes.normal,
+  className = ""
 }) {
   const stackClassName = useMemo(
     () =>
@@ -26,7 +27,7 @@ function Stack({
   );
 
   return (
-    <div className={stackClassName}>
+    <div className={`${stackClassName} ${className}`}>
       {React.Children.map(children, child => (
         <div className={"stack__element"}>{child}</div>
       ))}

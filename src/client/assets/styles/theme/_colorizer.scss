@@ -16,7 +16,7 @@ $classes-properties-matcher: (bg: background-color, text: color, border: border-
 
 .main-background {
   @include append-theme($themes) {
-    background: with-theme(background-gradient);
+    background: linear-gradient(with-theme(background-gradient));
     min-height: 100vh;
   }
 }

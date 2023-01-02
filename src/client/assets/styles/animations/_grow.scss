@@ -1,0 +1,21 @@
+@mixin animate-grow($max:1.1,$time: 3s, $delay: 0s, $ease: linear, $count: infinite) {
+  @keyframes grow {
+    0% {
+      transform: scale(1);
+    }
+    66% {
+      transform: scale($max);
+    }
+    100% {
+      $is-infinite: $count == infinite;
+
+      @if $is-infinite {
+        transform: scale(1);
+      } @else {
+        transform: scale($max);
+      }
+    }
+  }
+  animation: grow #{$time} $ease $count both;
+}
+

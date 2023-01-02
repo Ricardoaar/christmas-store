@@ -1,0 +1,43 @@
+
+.header {
+  h1 {
+    font-size: 3rem;
+
+    &:hover {
+      @include animate-grow(1.02, 1s, 0s, linear, infinite);
+    }
+
+  }
+
+  &.container {
+    padding: 1rem;
+    @include within-theme($themes) {
+      background-color: with-theme('secondary');
+      width: 100%;
+    }
+  }
+
+
+  &__icon {
+    font-size: 3rem;
+    margin-right: 1rem;
+
+    &:hover {
+      @include bubble();
+    }
+
+    @include within-theme($themes) {
+      $gradient: with-theme(background-gradient);
+      background: -webkit-linear-gradient($gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+
+  }
+
+  .stack {
+    justify-content: center;
+  }
+}
+

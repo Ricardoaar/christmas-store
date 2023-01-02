@@ -1,48 +1,18 @@
-import React, { useMemo } from "react";
-import PropTypes from "prop-types";
-import {
-  TextClassName,
-  TextSizes,
-  TextWeights
-} from "@components/atoms/Text/Text.constants";
-import generateClassName from "@client/utils/classNameGenerator";
-import { ThemeColors } from "@client/Theme/constants";
-import { textTypes } from "@components/atoms/Text/Text.types";
+import React from "react";
+import { textComponentTypes } from "@components/atoms/Text/Text.types";
+import withTextClassname from "@client/hocs/withTextClassname/withTextClassname";
 
-const Text = ({
+const BaseTextComponent = ({
   tag = "p",
+  className,
   children,
-  size = TextSizes.MD,
-  weight = TextWeights.MEDIUM,
-  color = ThemeColors.textDefault,
-  className: rawClassname = "",
   ...textProps
 }) => {
-  const className = useMemo(() => {
-    const elements = [
-      {
-        elementConjunction: "modifier",
-        elementName: size
-      },
-      {
-        elementConjunction: "modifier",
-        elementName: weight
-      },
-      {
-        elementConjunction: "modifier",
-        elementName: color
-      }
-    ];
-
-    return generateClassName(TextClassName, elements, {
-      returnsString: true,
-      removeBlockClass: true,
-      appendClassname: rawClassname
-    });
-  }, [color, rawClassname, size, weight]);
-
   return React.createElement(tag, { className, ...textProps }, children);
 };
 
-Text.propTypes = textTypes;
+const Text = withTextClassname(BaseTextComponent);
+BaseTextComponent.propTypes = textComponentTypes;
+Text.propTypes = textComponentTypes;
+
 export default Text;

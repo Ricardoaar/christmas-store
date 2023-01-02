@@ -1,5 +1,5 @@
-import TextInput from "@components/atoms/inputs/TextInput";
-import { textInputTypes } from "@components/atoms/inputs/TextInput.types";
+import TextInput from "@components/atoms/inputs/TextInput/TextInput";
+import { textInputTypes } from "@components/atoms/inputs/TextInput/TextInput.types";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 

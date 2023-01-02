@@ -4,7 +4,6 @@ import {
   TextSizes,
   TextWeights
 } from "@components/atoms/Text/Text.constants";
-import { ThemeColors } from "@client/Theme/constants";
 import generateClassName from "@client/utils/classNameGenerator";
 import { textTypes } from "@components/atoms/Text/Text.types";
 
@@ -12,8 +11,8 @@ const withTextClassname = Component => {
   const ComponentWithTextClassname = function ComponentWithText({
     size = TextSizes.MD,
     weight = TextWeights.MEDIUM,
-    color = ThemeColors.textDefault,
     className: rawClassname = "",
+    color,
     ...props
   }) {
     const className = useMemo(() => {

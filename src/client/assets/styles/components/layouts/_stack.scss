@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   place-items: center;
+  justify-content: center;
 
   &--tight {
     gap: 0;
@@ -30,7 +31,6 @@
   &__element {
     //width: 100%;
   }
-
 
 
 }

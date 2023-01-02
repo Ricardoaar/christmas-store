@@ -35,32 +35,7 @@ export const AppContent = () => {
           </Text>
         </Card.Header>
         <Card.Body>
-          <Text tag={"p"}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            consectetur dolorem earum magni quasi repudiandae. Ab asperiores
-            blanditiis consequuntur error ipsa provident quasi sed tempore
-            tenetur veritatis. Asperiores autem labore libero modi nisi nobis
-            omnis quis repellat. Ad architecto cupiditate doloremque non
-            sapiente sunt velit vero voluptatibus? Autem debitis delectus dicta
-            dolore earum, esse excepturi iste magnam maiores minus mollitia
-            necessitatibus nihil obcaecati omnis quae quas, quidem quis
-            reiciendis sed sit soluta ut voluptas. Aliquid amet aspernatur
-            consectetur consequatur culpa cum distinctio dolor ea eos est illum
-            itaque, minima modi, nesciunt odio quia quisquam ratione recusandae
-            sed sint ullam vel voluptate voluptatibus. Beatae dicta, impedit
-            itaque nostrum omnis qui repudiandae temporibus tenetur voluptates.
-            Assumenda cumque dicta eaque eligendi maxime molestiae nulla
-            perspiciatis quasi quibusdam quisquam quo sapiente ullam, ut
-            voluptas, voluptatem! Adipisci alias atque fugit labore laborum
-            minus obcaecati omnis placeat provident quibusdam? Aliquid
-            aspernatur cumque dicta dolorem nemo praesentium quae ut velit
-            voluptate. Dolores fuga iusto magnam odio sed tempore ut voluptates.
-            Ab aliquam ducimus minima officiis, omnis perferendis placeat
-            recusandae repudiandae rerum voluptatibus. Alias aliquid architecto
-            commodi debitis distinctio earum eos error exercitationem fugiat id
-            in, iure libero magni molestias nihil odio quibusdam quis
-            repudiandae suscipit tenetur voluptatibus.
-          </Text>
+          <Text tag={"p"}>Cats are nice</Text>
         </Card.Body>
         <Card.Footer>Cats</Card.Footer>
       </Card>
@@ -97,7 +72,7 @@ export const ThemeSetter = () => {
 const HomePage = () => {
   return (
     <>
-      <Header />
+      <Header title={"Super Store"} icon={"holly-berry"} />
       <AppContent />;
     </>
   );

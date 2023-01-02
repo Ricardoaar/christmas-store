@@ -4,6 +4,7 @@ import { THEMES } from "@client/Theme/context/ThemeContext/ThemeContext.constant
 import TextInput from "@components/atoms/inputs/TextInput/TextInput";
 import DropdownList from "@components/molecules/DropdownList/DropdownList";
 import ComplexIcon from "@components/molecules/ComplexIcon/ComplexIcon";
+import Heading from "@components/molecules/Heading/Heading";
 
 export const AppContent = () => {
   return (
@@ -17,6 +18,9 @@ export const AppContent = () => {
         placeholder={"Search"}
       />
       <ComplexIcon icon={"envelope"} color={"primary"} />
+      <Heading size={"xxl"} level={2} weight={"bold"}>
+        Super heading
+      </Heading>
     </>
   );
 };

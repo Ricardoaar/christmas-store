@@ -1,0 +1,29 @@
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  place-items: center;
+  &--tight {
+    gap: 0;
+  }
+
+  &--normal {
+    gap: 1rem;
+  }
+
+  &--wide {
+    gap: 2rem;
+  }
+
+  &--x-wide {
+    gap: 3rem;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+}

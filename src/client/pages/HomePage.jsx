@@ -7,12 +7,14 @@ import ComplexIcon from "@components/molecules/ComplexIcon/ComplexIcon";
 import Heading from "@components/molecules/Heading/Heading";
 import Card from "@components/atoms/Card/Card";
 import Text from "@components/atoms/Text/Text";
+import Stack from "@components/layouts/Stack/Stack";
+import { stackSpacingCLasses } from "@components/layouts/Stack/Stack.types";
 
 export const AppContent = () => {
   const [direction, setDirection] = React.useState("horizontal");
 
   return (
-    <>
+    <Stack type={stackSpacingCLasses.xWide} direction={"horizontal"}>
       <ThemeSetter />
       <TextInput
         size={"sm"}
@@ -68,7 +70,7 @@ export const AppContent = () => {
       >
         Change direction
       </button>
-    </>
+    </Stack>
   );
 };
 

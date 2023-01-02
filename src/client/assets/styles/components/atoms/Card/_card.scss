@@ -1,0 +1,128 @@
+$max-footer-normal-height: 3rem;
+$max-header-normal-height: 4rem;
+$max-body-normal-height: 25rem;
+
+
+@mixin card-overflow {
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-break: break-all;
+}
+
+.card {
+  display: grid;
+  border-radius: 4px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+
+  &--horizontal {
+    grid-template-areas: "card-header card-body"  "card-footer  card-footer";
+
+
+    .card__header {
+      margin-right: 0.5rem;
+    }
+
+    .card__body {
+      margin-bottom: 0.5rem;
+    }
+
+    &.card--normal {
+      max-width: 300px;
+      grid-template-columns:minmax(0, 100px) minmax(0, 300px);
+      grid-template-rows: minmax(0, $max-footer-normal-height + $max-body-normal-height) minmax(0, $max-footer-normal-height);
+    }
+
+    &.card--fit {
+      max-width: 100%;
+    }
+
+  }
+
+  &--vertical {
+    grid-template-areas: "card-header"
+                          "card-body"
+                          "card-footer";
+
+    &.card--fit {
+      max-width: 100%;
+    }
+
+    &.card--normal {
+      max-width: 300px;
+      grid-template-rows: minmax(0, $max-header-normal-height) minmax(0, $max-body-normal-height) minmax(0, $max-footer-normal-height);
+    }
+
+  }
+
+
+  &__header {
+    grid-area: card-header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem;
+    @include card-overflow;
+  }
+
+
+  &__body {
+    grid-area: card-body;
+    padding: 0.4rem;
+    @include card-overflow;
+  }
+
+  &__footer {
+    grid-area: card-footer;
+    padding: 0.4rem;
+    font-size: map-get($font-sizes, 'xs');
+    @include card-overflow;
+  }
+
+
+  @include within-theme($themes) {
+    background: to-rgba(with-theme('secondary'), 0.6);
+    color: with-theme('content');
+
+
+    $shadow-color: rgba(0, 0, 0, 0.1);
+
+    &--vertical {
+      .card__body {
+        box-shadow: 0 2px 2px 1px $shadow-color;
+      }
+
+
+      .card__header {
+        box-shadow: 0 2px 2px 1px $shadow-color;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &--horizontal {
+      .card__footer {
+        box-shadow: 2px -3px 8px 5px $shadow-color;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 1px;
+
+      &-track {
+        background: $shadow-color;
+      }
+
+      &-thumb {
+        background: to-rgba(with-theme('primary'), 0.6);
+      }
+
+      &-thumb:hover {
+        background: to-rgba(with-theme('primary'), 0.8);
+      }
+    }
+  }
+
+
+}

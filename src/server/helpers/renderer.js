@@ -12,7 +12,7 @@ import thunk from "redux-thunk";
 import { matchRoutes } from "react-router-dom";
 import { Provider } from "react-redux";
 
-const buildInitialReactAsHtml = (location, store) => {
+const buildInitialReactAsString = (location, store) => {
   return renderToString(
     <Provider store={store}>
       <ThemeContextProvider>
@@ -45,10 +45,11 @@ const generateSecurePreloadedState = store => {
 };
 
 const renderFullPage = (location, store, hashManifest) => {
-  const view = buildInitialReactAsHtml(location, store);
+  const view = buildInitialReactAsString(location, store);
 
   const { mainStylesLocation, mainBuildLocation, vendorScriptHtml } =
     getFilesByHashManifest(hashManifest);
+
   const preloadedState = generateSecurePreloadedState(store);
 
   return `
@@ -86,7 +87,7 @@ export const renderApp = (req, res) => {
 
   if (preloadedRequestsPromises?.length >= 1) {
     Promise.all(preloadedRequestsPromises).then(() => {
-      res.send(renderFullPage(req.url, store, req.hashManifest));
+      res.send(renderFullPage(req.path, store, req.hashManifest));
     });
   } else res.send(renderFullPage(req.path, store, req.hashManifest));
 };

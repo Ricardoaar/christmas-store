@@ -31,6 +31,8 @@
 }
 
 
-@function with-theme($key) {
-  @return map-get($theme-map, $key);
+
+
+@function to-rgba($color, $alpha) {
+  @return rgba($color, $alpha);
 }

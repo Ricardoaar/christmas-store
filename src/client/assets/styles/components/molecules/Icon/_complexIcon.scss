@@ -1,0 +1,21 @@
+.icon {
+  &__container {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+    }
+
+    @include within-theme($themes) {
+      background-color: with-theme('accent');
+    }
+  }
+}

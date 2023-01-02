@@ -56,6 +56,8 @@ const renderFullPage = (location, store, hashManifest) => {
       <head>
         <title>Ricardoaar Store</title>
         <link rel="stylesheet" href="${mainStylesLocation}">
+      <script src="https://kit.fontawesome.com/681847d319.js" crossorigin="anonymous"></script>
+        
       </head>
       <body>
       <script>

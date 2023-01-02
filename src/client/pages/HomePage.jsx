@@ -3,6 +3,7 @@ import { ThemeContext } from "@client/Theme/context/ThemeContext/ThemeContextPro
 import { THEMES } from "@client/Theme/context/ThemeContext/ThemeContext.constants";
 import TextInput from "@components/atoms/inputs/TextInput/TextInput";
 import DropdownList from "@components/molecules/DropdownList/DropdownList";
+import ComplexIcon from "@components/molecules/ComplexIcon/ComplexIcon";
 
 export const AppContent = () => {
   return (
@@ -15,6 +16,7 @@ export const AppContent = () => {
         className={"searchbar"}
         placeholder={"Search"}
       />
+      <ComplexIcon icon={"envelope"} color={"primary"} />
     </>
   );
 };

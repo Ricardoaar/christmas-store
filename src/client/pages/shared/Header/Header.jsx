@@ -20,7 +20,7 @@ const Header = ({ title, icon: rawIconName }) => {
     [rawIconName]
   );
   return (
-    <Container className={"header"} type={ContainerTypes.fluid}>
+    <Container className={"header"} type={ContainerTypes.fluid} tag={"section"}>
       <Stack type={StackTypes.xWide} direction={StackDirections.horizontal}>
         <Heading level={1} weight={"bold"} size={"xxl"} color={"content"}>
           {title}

@@ -14,7 +14,8 @@ function DropdownList({
   initialSelected,
   onChange,
   value,
-  className
+  className,
+  icon
 }) {
   const {
     state: showMenu,
@@ -57,7 +58,11 @@ function DropdownList({
 
   return (
     <Dropdown className={className}>
-      <Dropdown.Title onClick={handleTitleClick} title={dropdownTitle} />
+      <Dropdown.Title
+        onClick={handleTitleClick}
+        title={dropdownTitle}
+        icon={icon}
+      />
       {showMenu && (
         <Dropdown.Menu
           options={options}

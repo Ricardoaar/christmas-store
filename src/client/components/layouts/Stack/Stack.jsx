@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import generateClassName from "@client/utils/classNameGenerator";
 import {
-  StackDirections, stackPropTypes,
+  StackDirections,
+  stackPropTypes,
   StackTypes
 } from "@components/layouts/Stack/Stack.types";
 
@@ -9,7 +10,9 @@ function Stack({
   children,
   direction = StackDirections.vertical,
   type = StackTypes.normal,
-  className = ""
+  className = "",
+  tag = "div",
+  childTag = "div"
 }) {
   const stackClassName = useMemo(
     () =>
@@ -26,12 +29,12 @@ function Stack({
     [direction, type]
   );
 
-  return (
-    <div className={`${stackClassName} ${className}`}>
-      {React.Children.map(children, child => (
-        <div className={"stack__element"}>{child}</div>
-      ))}
-    </div>
+  return React.createElement(
+    tag,
+    { className: `${stackClassName} ${className}` },
+    React.Children.map(children, child =>
+      React.createElement(childTag, { className: "stack__element" }, child)
+    )
   );
 }
 

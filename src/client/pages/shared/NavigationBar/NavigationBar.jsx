@@ -11,25 +11,28 @@ import Paragraph from "@components/molecules/Paragraph/Paragraph";
 
 const NavigationBar = () => {
   return (
-    <Container type={ContainerTypes.fluid} className={"navigation-bar"}>
-      <ul>
-        <Stack type={StackTypes.xWide} direction={StackDirections.horizontal}>
-          <li>
-            <Link to={"/"}>
-              <Paragraph color={"content"} weight={"bold"} size={"md"}>
-                Store
-              </Paragraph>
-            </Link>
-          </li>
-          <li>
-            <Link to={"/"}>
-              <Paragraph color={"content"} weight={"bold"} size={"md"}>
-                Favorites
-              </Paragraph>
-            </Link>
-          </li>
-        </Stack>
-      </ul>
+    <Container
+      type={ContainerTypes.fluid}
+      className={"navigation-bar"}
+      tag={"section"}
+    >
+      <Stack
+        type={StackTypes.xWide}
+        direction={StackDirections.horizontal}
+        tag={"ul"}
+        childTag={"li"}
+      >
+        <Link to={"/"}>
+          <Paragraph color={"content"} weight={"bold"} size={"md"}>
+            Store
+          </Paragraph>
+        </Link>
+        <Link to={"/"}>
+          <Paragraph color={"content"} weight={"bold"} size={"md"}>
+            Favorites
+          </Paragraph>
+        </Link>
+      </Stack>
     </Container>
   );
 };

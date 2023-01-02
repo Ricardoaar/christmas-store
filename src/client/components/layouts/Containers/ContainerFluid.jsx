@@ -8,7 +8,8 @@ import {
 const Container = ({
   type = ContainerTypes.fixed,
   className = "",
-  children
+  children,
+  tag = "div"
 }) => {
   const containerClassname = useMemo(
     () =>
@@ -20,8 +21,11 @@ const Container = ({
       ]),
     [type]
   );
-
-  return <div className={`${containerClassname} ${className}`}>{children}</div>;
+  return React.createElement(
+    tag,
+    { className: `${containerClassname} ${className}` },
+    children
+  );
 };
 Container.propTypes = containerProptypes;
 export default Container;

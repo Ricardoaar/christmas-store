@@ -10,14 +10,17 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combinedReducers } from "@client/redux";
 import thunk from "redux-thunk";
 import { matchRoutes } from "react-router-dom";
+import { Provider } from "react-redux";
 
-const buildInitialReactAsHtml = location => {
+const buildInitialReactAsHtml = (location, store) => {
   return renderToString(
-    <ThemeContextProvider>
-      <StaticRouter location={location} context={{}}>
-        <AppRoutes />
-      </StaticRouter>
-    </ThemeContextProvider>
+    <Provider store={store}>
+      <ThemeContextProvider>
+        <StaticRouter location={location} context={{}}>
+          <AppRoutes />
+        </StaticRouter>
+      </ThemeContextProvider>
+    </Provider>
   );
 };
 

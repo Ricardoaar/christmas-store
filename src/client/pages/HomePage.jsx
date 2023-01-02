@@ -1,18 +1,19 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "@client/Theme/context/ThemeContext/ThemeContextProvider";
 import { THEMES } from "@client/Theme/context/ThemeContext/ThemeContext.constants";
-import Text from "@components/atoms/Text/Text";
+import TextInput from "@components/atoms/inputs/TextInput";
 
 export const AppContent = () => {
   return (
     <>
       <ThemeSetter />
-      <Text tag={"h1"} size={"xxl"} weight={"light"} color={"secondary"}>
-        Cats
-      </Text>
-      {/*<div className="background-gradient">*/}
-      {/*  <h1>Hello World</h1>*/}
-      {/*</div>*/}
+      <TextInput
+        size={"sm"}
+        weight={"light"}
+        color={"secondary"}
+        className={"searchbar"}
+        placeholder={"Search"}
+      />
     </>
   );
 };

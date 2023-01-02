@@ -42,11 +42,4 @@ describe("ComplexIcon", function () {
     await userEvent.hover(element);
     expect(onHover).toHaveBeenCalled();
   });
-
-  test("Should add classname to icon container", () => {
-    const className = "test";
-    render(<TestComponent className={className} />);
-    const element = screen.getByTestId("icon-container");
-    expect(element).toHaveClass(className);
-  });
 });

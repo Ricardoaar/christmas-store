@@ -1,0 +1,44 @@
+.dropdown {
+  text-transform: capitalize;
+
+  &__container {
+    text-align: left;
+    border: 1px solid #ccc;
+    position: relative;
+    border-radius: 5px;
+    text-transform: capitalize;
+
+  }
+
+  &__title {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &__menu {
+    position: absolute;
+    transform: translateY(4px);
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: auto;
+    max-height: 150px;
+    background-color: #fff;
+    z-index: 10;
+  }
+
+  &__item {
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+
+
+}

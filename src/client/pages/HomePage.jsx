@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "@client/Theme/context/ThemeContext/ThemeContextProvider";
 import { THEMES } from "@client/Theme/context/ThemeContext/ThemeContext.constants";
-import TextInput from "@components/atoms/inputs/TextInput";
+import TextInput from "@components/atoms/inputs/TextInput/TextInput";
+import DropdownList from "@components/molecules/DropdownList/DropdownList";
 
 export const AppContent = () => {
   return (
@@ -18,17 +19,20 @@ export const AppContent = () => {
   );
 };
 
+const themeDropdownOptions = Object.entries(THEMES).map(([key, value]) => {
+  return { label: key, value };
+});
+
 export const ThemeSetter = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
-    <select value={theme} onChange={e => setTheme(e.currentTarget.value)}>
-      {Object.values(THEMES).map((option, idx) => (
-        <option value={option} key={idx}>
-          {option}
-        </option>
-      ))}
-    </select>
+    <DropdownList
+      options={themeDropdownOptions}
+      onChange={setTheme}
+      initialSelected={theme}
+      color={"secondary"}
+    />
   );
 };
 

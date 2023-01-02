@@ -1,6 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 
-export const useControlProps = (initialValue = "", control) => {
+const getValueFromEvent = event => {
+  const { target } = event;
+  return target.type === "checkbox" ? target.checked : target.value;
+};
+
+export const useControlProps = (
+  initialValue = "",
+  control = {},
+  valueGetter = getValueFromEvent
+) => {
   const [value, setValue] = useState(initialValue);
   const { value: controlledValue, onChange: controlledOnChange } = control;
 
@@ -9,12 +18,12 @@ export const useControlProps = (initialValue = "", control) => {
   }, [controlledValue]);
 
   const onChange = useCallback(
-    event => {
-      const { value } = event.target;
+    input => {
+      const value = valueGetter(input);
       controlledOnChange?.(value);
       setValue(value);
     },
-    [controlledOnChange]
+    [controlledOnChange, valueGetter]
   );
 
   return { value, onChange };

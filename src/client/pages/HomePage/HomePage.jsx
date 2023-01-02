@@ -10,6 +10,7 @@ import Text from "@components/atoms/Text/Text";
 import Stack from "@components/layouts/Stack/Stack";
 import { StackTypes } from "@components/layouts/Stack/Stack.types";
 import Header from "@pages/shared/Header/Header";
+import NavigationBar from "@pages/shared/NavigationBar/NavigationBar";
 
 export const AppContent = () => {
   const [direction, setDirection] = React.useState("horizontal");
@@ -73,6 +74,7 @@ const HomePage = () => {
   return (
     <>
       <Header title={"Super Store"} icon={"holly-berry"} />
+      <NavigationBar />
       <AppContent />;
     </>
   );

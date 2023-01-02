@@ -5,7 +5,7 @@ import Text from "@components/atoms/Text/Text";
 import { paragraphTypes } from "@components/molecules/Paragraph/Paragraph.types";
 import { getParagraphProps } from "@components/molecules/Paragraph/Paragraph.utils";
 
-const Paragraph = ({ children, textProps }) => {
+const Paragraph = ({ children, ...textProps }) => {
   const props = getParagraphProps(children, textProps);
 
   return (

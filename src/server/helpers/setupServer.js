@@ -27,15 +27,6 @@ const setupProductionServer = app => {
   app.use(helmet.permittedCrossDomainPolicies());
   app.use(helmet.hidePoweredBy());
   app.use(helmet.xssFilter());
-
-  // Allow initial state of redux
-  app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        scriptSrc: ["'self'", "'unsafe-inline'"]
-      }
-    })
-  );
 };
 
 const setups = {

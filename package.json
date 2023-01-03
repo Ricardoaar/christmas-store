@@ -72,5 +72,8 @@
     "dev": "nodemon src/server/index.js",
     "test": "jest",
     "coverage": "jest --coverage"
+  },
+  "engines": {
+    "node": ">=16.x"
   }
 }

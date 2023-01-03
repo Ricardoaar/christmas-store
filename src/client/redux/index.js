@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import productsSlice from "@client/redux/reducers/products/slice";
+import { appReducer } from "@client/redux/reducers/app/slice";
+import { productsReducer } from "@client/redux/reducers/products/slice";
 
 export const combinedReducers = combineReducers({
-  products: productsSlice.reducer
+  products: productsReducer,
+  app: appReducer
 });

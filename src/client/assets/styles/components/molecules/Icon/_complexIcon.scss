@@ -1,13 +1,18 @@
 
 .icon {
+
+
   &__container {
+
+
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.37);
+    font-size: 1rem;
 
     &:hover {
       cursor: pointer;
@@ -17,6 +22,22 @@
 
     @include within-theme($themes) {
       background-color: with-theme('accent');
+
+
+      &.active {
+        background-color: with-theme('primary');
+
+        .icon {
+          color: with-theme('accent');
+
+        }
+      }
+      .icon {
+        font-size: 1rem;
+        color: with-theme('secondary');
+      }
+
     }
   }
+
 }

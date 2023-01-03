@@ -17,9 +17,9 @@ const TextInputBase = ({
     <input
       className={className}
       placeholder={placeholder}
+      {...inputProps}
       onChange={onChange}
       value={value}
-      {...inputProps}
     />
   );
 };

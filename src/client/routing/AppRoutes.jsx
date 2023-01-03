@@ -19,7 +19,7 @@ export const routes = [
     path: "/",
     exact: true,
     element: <HomePage />,
-    onLoad: store => store.dispatch(fetchUsersData())
+    // onLoad: store => store.dispatch(fetchUsersData())
   }
 ];
 

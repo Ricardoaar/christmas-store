@@ -12,7 +12,11 @@ const HomePage = () => {
         <NavigationBar />
       </Container>
 
-      <PageContent />
+      <PageContent>
+        {({ layout }) => {
+          return <p>{layout} </p>;
+        }}
+      </PageContent>
     </>
   );
 };

@@ -8,29 +8,21 @@ import IconComponent from "@components/atoms/Icon/Icon";
 import { THEMES } from "@client/Theme/context/ThemeContext/ThemeContext.constants";
 import { generateFontAwesomeIconClassname } from "@client/utils/generateFontAwesomeIcon";
 import TextInput from "@components/atoms/inputs/TextInput/TextInput";
-import Icon from "@components/atoms/Icon/Icon";
 import useFontAwesomeIconClass from "@client/hooks/useFontAwesomeIconClass";
+import { connect, useDispatch } from "react-redux";
+import {
+  setFilter,
+  setLayout,
+  setPage,
+  setPageSize,
+  setSortBy,
+  setSortDirection
+} from "@client/redux/reducers/app/actions";
+import ComplexIcon from "@components/molecules/ComplexIcon/ComplexIcon";
 
 const themeDropdownOptions = Object.entries(THEMES).map(([key, value]) => {
   return { label: key, value };
 });
-
-const data = {
-  id: 4,
-  title: "Handmade Fresh Table",
-  price: 687,
-  description: "Andy shoes are designed to keeping in...",
-  category: {
-    id: 5,
-    name: "Others",
-    image: "https://placeimg.com/640/480/any?r=0.591926261873231"
-  },
-  images: [
-    "https://placeimg.com/640/480/any?r=0.9178516507833767",
-    "https://placeimg.com/640/480/any?r=0.9300320592588625",
-    "https://placeimg.com/640/480/any?r=0.8807778235430017"
-  ]
-};
 
 const sortDropdownOptions = [
   { value: "id", label: "id" },
@@ -47,14 +39,45 @@ const getIconPerTheme = theme => {
   return iconsPerThem[theme];
 };
 
-const PageContent = ({ children }) => {
+const PageContent = ({
+  children,
+  sortBy,
+  filter,
+  layout,
+  setSortBy,
+  setFilter,
+  setLayout
+}) => {
   const { theme, setTheme } = useContext(ThemeContext);
-
   const { className: themeIcon } = useFontAwesomeIconClass(
     getIconPerTheme(theme)
   );
-
   const { className: sortByIcon } = useFontAwesomeIconClass("arrow-down");
+
+  const pageLayouts = useMemo(
+    () => [
+      {
+        value: "list",
+        "aria-label": "layout-cards-vertical",
+        icon: "panorama",
+        active: layout === "list",
+        onClick: () => setLayout("list")
+      },
+      {
+        "aria-label": "layout-cards-horizontal",
+        icon: "clone",
+        active: layout === "card-horizontal",
+        onClick: () => setLayout("card-horizontal")
+      },
+      {
+        "aria-label": "layout-cards-grid",
+        icon: "panorama",
+        active: layout === "card-vertical",
+        onClick: () => setLayout("card-vertical")
+      }
+    ],
+    [layout, setLayout]
+  );
 
   return (
     <>
@@ -79,18 +102,45 @@ const PageContent = ({ children }) => {
               color={"secondary"}
               className={"searchbar"}
               placeholder={"Search"}
+              control={{
+                value: filter,
+                onChange: setFilter
+              }}
             />
             <DropdownList
               options={sortDropdownOptions}
               placeholder={"Sort by"}
               icon={<IconComponent className={sortByIcon} />}
+              value={sortBy}
+              onChange={setSortBy}
             />
           </Stack>
         </Stack>
+        <Stack
+          direction={"horizontal"}
+          type={"x-wide"}
+          className={"layout-menu__container"}
+        >
+          {pageLayouts.map(({ ...props }) => {
+            return <ComplexIcon key={props.icon} {...props} />;
+          })}
+        </Stack>
+        {typeof children === "function" ? children({ layout }) : children}
       </Container>
-      {/*{children()}*/}
     </>
   );
 };
+const mapStateToProps = state => {
+  return {
+    sortBy: state.app.sortBy,
+    filter: state.app.filter,
+    layout: state.app.layout
+  };
+};
 
-export default PageContent;
+const ConnectedPageContent = connect(mapStateToProps, {
+  setSortBy,
+  setFilter,
+  setLayout
+})(PageContent);
+export default ConnectedPageContent;

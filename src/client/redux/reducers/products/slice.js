@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsersData } from "./actions";
 
 const productsSlice = createSlice({
-  name: "users",
+  name: "products",
   initialState: {
     entities: []
   },
@@ -13,5 +13,5 @@ const productsSlice = createSlice({
     });
   }
 });
-
+export const { reducer: productsReducer } = productsSlice;
 export default productsSlice;

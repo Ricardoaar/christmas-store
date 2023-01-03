@@ -71,7 +71,7 @@ const renderFullPage = (location, store, hashManifest) => {
       <script src="https://kit.fontawesome.com/681847d319.js" crossorigin="anonymous"></script>
         
       </head>
-      <body class="main-background">
+      <body class="main-background theme-christmas">
       <script>
           window.__PRELOADED_STATE__ = ${preloadedState};
         </script>

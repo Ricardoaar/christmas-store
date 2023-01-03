@@ -9,16 +9,14 @@ import { THEMES } from "@client/Theme/context/ThemeContext/ThemeContext.constant
 import { generateFontAwesomeIconClassname } from "@client/utils/generateFontAwesomeIcon";
 import TextInput from "@components/atoms/inputs/TextInput/TextInput";
 import useFontAwesomeIconClass from "@client/hooks/useFontAwesomeIconClass";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import {
   setFilter,
   setLayout,
-  setPage,
-  setPageSize,
-  setSortBy,
-  setSortDirection
+  setSortBy
 } from "@client/redux/reducers/app/actions";
 import ComplexIcon from "@components/molecules/ComplexIcon/ComplexIcon";
+import PropTypes from "prop-types";
 
 const themeDropdownOptions = Object.entries(THEMES).map(([key, value]) => {
   return { label: key, value };
@@ -118,11 +116,24 @@ const PageContent = ({
             return <ComplexIcon key={props.icon} {...props} />;
           })}
         </Stack>
-        {typeof children === "function" ? children({ layout }) : children}
+        {typeof children === "function"
+          ? children({ layout, sortBy, filter })
+          : children}
       </Container>
     </>
   );
 };
+
+PageContent.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
+  sortBy: PropTypes.string,
+  filter: PropTypes.string,
+  layout: PropTypes.string,
+  setSortBy: PropTypes.func,
+  setFilter: PropTypes.func,
+  setLayout: PropTypes.func
+};
+
 const mapStateToProps = state => {
   return {
     sortBy: state.app.sortBy,

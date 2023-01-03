@@ -7,38 +7,27 @@ import { ListProducts } from "@pages/shared/ElementsLayout/ProductsList";
 import { homePageTypes } from "@pages/HomePage/HomePage.types";
 import CardLayout from "@pages/shared/ElementsLayout/CardLayout";
 
-const ListComponentByLayout = {
+const ListChildComponentsByLayout = {
   list: ListProducts,
   card: CardLayout
 };
 
 const HomePage = ({ products, fetchProducts }) => {
   useEffect(() => {
-    console.log("Aloo?");
     fetchProducts();
   }, []);
   return (
     <>
       <PageContent>
-        {({ layout }) => {
-          const LayoutComponent = ListComponentByLayout[layout];
-
+        {({ layout, sortBy, filter }) => {
           return (
             <LayoutElements
               className={`product__layout--${layout}`}
+              filter={filter}
+              sortBy={sortBy}
               entities={products.entities}
               layout={layout}
-              render={(entities = []) => {
-                return entities.map(({ ...layoutProps }) => {
-                  return (
-                    <LayoutComponent
-                      {...layoutProps}
-                      layout={layout}
-                      key={layoutProps.title}
-                    />
-                  );
-                });
-              }}
+              childComponentsByLayout={ListChildComponentsByLayout}
             />
           );
         }}
@@ -46,6 +35,7 @@ const HomePage = ({ products, fetchProducts }) => {
     </>
   );
 };
+
 export const onLoadHomePage = store => {
   return store.dispatch(fetchProducts());
 };

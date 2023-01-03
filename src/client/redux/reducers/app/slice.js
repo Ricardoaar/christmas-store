@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  sortBy: "name",
-  sortDirection: "asc",
+  sortBy: "",
+  sortDirection: "desc",
   filter: "",
   page: 1,
   pageSize: 10,

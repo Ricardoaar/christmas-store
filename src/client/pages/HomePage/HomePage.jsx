@@ -1,24 +1,52 @@
 import React from "react";
-import Header from "@pages/shared/Header/Header";
-import NavigationBar from "@pages/shared/NavigationBar/NavigationBar";
 import PageContent from "@pages/shared/PageContent/PageActions";
-import Container from "@components/layouts/Containers/ContainerFluid";
+import LayoutElements from "@pages/shared/ElementsLayout/LayoutElements";
+import { fetchProducts } from "@client/redux/reducers/products/actions";
+import { connect } from "react-redux";
+import { ListProducts } from "@pages/shared/ElementsLayout/ProductsList";
+import { homePageTypes } from "@pages/HomePage/HomePage.types";
 
-const HomePage = () => {
+const ListComponentByLayout = {
+  list: ListProducts,
+  card: () => "ola"
+};
+
+const HomePage = ({ products }) => {
+  const LayoutComponent = ListComponentByLayout["list"];
   return (
     <>
-      <Container type={"fluid"} tag={"header"}>
-        <Header title={"Super Store"} icon={"holly-berry"} />
-        <NavigationBar />
-      </Container>
-
       <PageContent>
         {({ layout }) => {
-          return <p>{layout} </p>;
+          return (
+            <LayoutElements
+              className={`product__layout--${layout}`}
+              entities={products.entities}
+              layout={layout}
+              render={(entities = []) => {
+                return entities.map(({ ...layoutProps }) => {
+                  return (
+                    <LayoutComponent
+                      {...layoutProps}
+                      layout={layout}
+                      key={layoutProps.title}
+                    />
+                  );
+                });
+              }}
+            />
+          );
         }}
       </PageContent>
     </>
   );
 };
+export const onLoadHomePage = store => {
+  return store.dispatch(fetchProducts());
+};
 
-export default HomePage;
+const ConnectedHomePage = connect(state => ({ products: state.products }), {
+  fetchProducts
+})(HomePage);
+
+HomePage.propTypes = homePageTypes;
+export default ConnectedHomePage;

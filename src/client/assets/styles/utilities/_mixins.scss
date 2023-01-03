@@ -2,3 +2,24 @@
   @return map-get($theme-map, $key);
 }
 
+@mixin with-scrollbar-theme {
+  $shadow-color: rgba(0, 0, 0, 0.1);
+
+  @include within-theme($themes) {
+    ::-webkit-scrollbar {
+      width: 1px;
+
+      &-track {
+        background: $shadow-color;
+      }
+
+      &-thumb {
+        background: to-rgba(with-theme('primary'), 0.6);
+      }
+
+      &-thumb:hover {
+        background: to-rgba(with-theme('primary'), 0.8);
+      }
+    }
+  }
+}

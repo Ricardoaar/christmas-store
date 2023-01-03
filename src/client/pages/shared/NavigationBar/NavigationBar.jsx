@@ -27,7 +27,7 @@ const NavigationBar = () => {
             Store
           </Paragraph>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/favorites"}>
           <Paragraph color={"content"} weight={"bold"} size={"md"}>
             Favorites
           </Paragraph>

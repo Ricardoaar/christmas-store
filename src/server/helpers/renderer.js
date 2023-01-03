@@ -11,12 +11,19 @@ import { combinedReducers } from "@client/redux";
 import thunk from "redux-thunk";
 import { matchRoutes } from "react-router-dom";
 import { Provider } from "react-redux";
+import Container from "@components/layouts/Containers/ContainerFluid";
+import Header from "@pages/shared/Header/Header";
+import NavigationBar from "@pages/shared/NavigationBar/NavigationBar";
 
 const buildInitialReactAsString = (location, store) => {
   return renderToString(
     <Provider store={store}>
       <ThemeContextProvider>
         <StaticRouter location={location} context={{}}>
+          <Container type={"fluid"} tag={"header"}>
+            <Header title={"Super Store"} icon={"holly-berry"} />
+            <NavigationBar />
+          </Container>
           <AppRoutes />
         </StaticRouter>
       </ThemeContextProvider>
@@ -56,7 +63,7 @@ const renderFullPage = (location, store, hashManifest) => {
       <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ricardoaar Store</title>
+        <title>Super Store</title>
         <link rel="stylesheet" href="${mainStylesLocation}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +71,7 @@ const renderFullPage = (location, store, hashManifest) => {
       <script src="https://kit.fontawesome.com/681847d319.js" crossorigin="anonymous"></script>
         
       </head>
-      <body>
+      <body class="main-background">
       <script>
           window.__PRELOADED_STATE__ = ${preloadedState};
         </script>
@@ -78,6 +85,7 @@ const renderFullPage = (location, store, hashManifest) => {
 
 const getPreloadRequestsPromises = (path, store) => {
   const matchedRoutes = matchRoutes(routes, path);
+
   return matchedRoutes?.map(({ route }) => route.onLoad?.(store));
 };
 

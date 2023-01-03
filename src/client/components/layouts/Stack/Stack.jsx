@@ -12,7 +12,9 @@ function Stack({
   type = StackTypes.normal,
   className = "",
   tag = "div",
-  childTag = "div"
+  childTag = "div",
+  childClassname = "",
+  noChildContainer
 }) {
   const stackClassName = useMemo(
     () =>
@@ -32,9 +34,15 @@ function Stack({
   return React.createElement(
     tag,
     { className: `${stackClassName} ${className}` },
-    React.Children.map(children, child =>
-      React.createElement(childTag, { className: "stack__element" }, child)
-    )
+    React.Children.map(children, child => {
+      return noChildContainer
+        ? child
+        : React.createElement(
+            childTag,
+            { className: `stack__element ${childClassname}` },
+            child
+          );
+    })
   );
 }
 

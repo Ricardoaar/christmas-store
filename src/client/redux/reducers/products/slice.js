@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsersData } from "./actions";
+import { fetchProducts } from "./actions";
 
 const productsSlice = createSlice({
   name: "products",
@@ -8,7 +8,7 @@ const productsSlice = createSlice({
   },
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(fetchUsersData.fulfilled, (state, action) => {
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.entities = action.payload;
     });
   }

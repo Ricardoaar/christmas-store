@@ -11,6 +11,10 @@ import { AppRoutes } from "@client/routing/AppRoutes";
 
 // Utils & Redux
 import { combinedReducers } from "@client/redux";
+import Container from "@components/layouts/Containers/ContainerFluid";
+import Header from "@pages/shared/Header/Header";
+import NavigationBar from "@pages/shared/NavigationBar/NavigationBar";
+import React from "react";
 
 const history = createBrowserHistory();
 
@@ -25,6 +29,10 @@ const App = () => {
     <Provider store={store}>
       <ThemeContextProvider>
         <BrowserRouter history={history}>
+          <Container type={"fluid"} tag={"header"}>
+            <Header title={"Super Store"} icon={"holly-berry"} />
+            <NavigationBar />
+          </Container>
           <AppRoutes />
         </BrowserRouter>
       </ThemeContextProvider>

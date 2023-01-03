@@ -57,22 +57,16 @@ const PageContent = ({
   const pageLayouts = useMemo(
     () => [
       {
-        "aria-label": "layout-cards-vertical",
+        "aria-label": "layout-list",
         icon: "list",
         active: layout === "list",
         onClick: () => setLayout("list")
       },
       {
-        "aria-label": "layout-cards-horizontal",
+        "aria-label": "layout-cards",
         icon: "clone",
-        active: layout === "card-horizontal",
-        onClick: () => setLayout("card-horizontal")
-      },
-      {
-        "aria-label": "layout-cards-grid",
-        icon: "panorama",
-        active: layout === "card-vertical",
-        onClick: () => setLayout("card-vertical")
+        active: layout === "card",
+        onClick: () => setLayout("card")
       }
     ],
     [layout, setLayout]

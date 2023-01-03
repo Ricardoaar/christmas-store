@@ -3,8 +3,9 @@ import React from "react";
 import { useRoutes } from "react-router-dom";
 
 // Components
-import HomePage from "@pages/HomePage/HomePage";
-import { fetchUsersData } from "@client/redux/reducers/products/actions";
+import HomePage, { onLoadHomePage } from "@pages/HomePage/HomePage";
+import { fetchProducts } from "@client/redux/reducers/products/actions";
+// import { fetchUsersData } from "@client/redux/reducers/products/actions";
 
 /*
  * This is the main routing file for the application.
@@ -19,7 +20,7 @@ export const routes = [
     path: "/",
     exact: true,
     element: <HomePage />,
-    // onLoad: store => store.dispatch(fetchUsersData())
+    onLoad: onLoadHomePage
   }
 ];
 

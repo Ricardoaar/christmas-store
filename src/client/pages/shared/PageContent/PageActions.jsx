@@ -57,9 +57,8 @@ const PageContent = ({
   const pageLayouts = useMemo(
     () => [
       {
-        value: "list",
         "aria-label": "layout-cards-vertical",
-        icon: "panorama",
+        icon: "list",
         active: layout === "list",
         onClick: () => setLayout("list")
       },

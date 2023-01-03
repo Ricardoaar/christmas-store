@@ -14,7 +14,7 @@ import { generateFontAwesomeIconClassname } from "@client/utils/generateFontAwes
 import { headerProptypes } from "@pages/shared/Header/Header.propTypes";
 import { ContainerTypes } from "@components/layouts/Containers/container.types";
 
-const Header = ({ title, icon: rawIconName }) => {
+const Header = ({ title = "", icon: rawIconName }) => {
   const icon = useMemo(
     () => generateFontAwesomeIconClassname(rawIconName),
     [rawIconName]
@@ -25,7 +25,7 @@ const Header = ({ title, icon: rawIconName }) => {
         <Heading level={1} weight={"bold"} size={"xxl"} color={"content"}>
           {title}
         </Heading>
-        <Icon className={`header__icon ${icon}`}></Icon>
+        {icon && <Icon className={`header__icon ${icon}`} />}
       </Stack>
     </Container>
   );

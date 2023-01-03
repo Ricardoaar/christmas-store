@@ -28,7 +28,7 @@ const NavigationBar = () => {
           </Paragraph>
         </Link>
         {/*<Link to={"/favorites"}>*/}
-        {/*  <Paragraph color={"content"} weight={"bold"} size={"md"}>*/}
+        {/*  <Paragraph color={"content"} weight={"bold"} size=v{"md"}>*/}
         {/*    Favorites*/}
         {/*  </Paragraph>*/}
         {/*</Link>*/}

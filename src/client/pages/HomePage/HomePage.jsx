@@ -17,6 +17,7 @@ const HomePage = ({ products, fetchProducts }) => {
     // If cache is applied in backend
     fetchProducts();
   }, []);
+
   return (
     <>
       <PageContent>

@@ -4,13 +4,14 @@ import Heading from "@components/molecules/Heading/Heading";
 import Paragraph from "@components/molecules/Paragraph/Paragraph";
 import ComplexIcon from "@components/molecules/ComplexIcon/ComplexIcon";
 import React from "react";
+import PropTypes from "prop-types";
 
 export const ListProducts = ({
   id,
   title,
   price,
   category,
-  images,
+  images = [],
   description,
   layout
 }) => {
@@ -41,4 +42,16 @@ export const ListProducts = ({
       </Container>
     </Container>
   );
+};
+
+ListProducts.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+  category: PropTypes.shape({
+    name: PropTypes.string
+  }),
+  images: PropTypes.arrayOf(PropTypes.string),
+  description: PropTypes.string,
+  layout: PropTypes.string
 };

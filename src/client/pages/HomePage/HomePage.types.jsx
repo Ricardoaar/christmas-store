@@ -4,7 +4,7 @@ export const homePageTypes = {
   products: PropTypes.shape({
     entities: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.any,
         title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         category: PropTypes.shape({

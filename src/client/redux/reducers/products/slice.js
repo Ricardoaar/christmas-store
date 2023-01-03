@@ -9,7 +9,7 @@ const productsSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.entities = action.payload;
+      state.entities = action.payload.results;
     });
   }
 });

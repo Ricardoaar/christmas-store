@@ -4,7 +4,6 @@ import { useRoutes } from "react-router-dom";
 
 // Components
 import HomePage, { onLoadHomePage } from "@pages/HomePage/HomePage";
-import { fetchProducts } from "@client/redux/reducers/products/actions";
 // import { fetchUsersData } from "@client/redux/reducers/products/actions";
 
 /*

@@ -110,8 +110,8 @@ $max-body-normal-height: 25rem;
 
 
   @include within-theme($themes) {
-    background: to-rgba(with-theme('secondary'), 0.6);
-    color: with-theme('content');
+    background: with-theme('accent');
+    color: with-theme('secondary');
 
 
     $shadow-color: rgba(0, 0, 0, 0.1);

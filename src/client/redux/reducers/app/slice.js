@@ -6,7 +6,7 @@ const initialState = {
   filter: "",
   page: 1,
   pageSize: 10,
-  layout: "list"
+  layout: "card"
 };
 
 const appSlice = createSlice({

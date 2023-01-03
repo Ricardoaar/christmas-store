@@ -15,7 +15,7 @@ const ListLayout = ({ children, className }) => {
     </Stack>
   );
 };
-const CardLayout = ({ children, clasName: className }) => {
+const CardLayout = ({ children, className }) => {
   return (
     <Stack
       direction={"horizontal"}

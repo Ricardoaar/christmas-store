@@ -1,9 +1,5 @@
 # Super Store
 
-<h3 style="color:#dc6565">
-Important: API IS MOCKED DUE TO ERROR 500 IN FAKE STORE D:
-</h3>
-
 [Deployed on heroku!](https://super-store-rra.herokuapp.com/)
 
 This is a customizable and extensible store. It is made with React and Redux and using SSR strategy.

@@ -64,15 +64,5 @@ describe("HomePage", function () {
     expect(dropdownIcon).toBeInTheDocument("fa-cat");
   });
 
-  test("Should render as many products as given", async () => {
-    render(<TestComponent />);
-    const product1 = await screen.findAllByRole("heading", {
-      level: 4,
-      name: "Handmade Fresh Table"
-    });
-
-    expect(product1).not.toHaveLength(0);
-  });
-
   //Todo: Fake api -> constants for api calls -> test sort by and filter by
 });

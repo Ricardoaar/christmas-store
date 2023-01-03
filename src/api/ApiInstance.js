@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const ApiInstance = axios.create({
-  baseURL: "https://fakestoreapi.com"
+  baseURL: "https://api.escuelajs.co/api"
 });
 
 class Api {
@@ -16,23 +16,31 @@ class Api {
   }
 
   static async get(url, config) {
-    const response = await ApiInstance.get(`${url}`, config);
+    const response = await ApiInstance.get(`${this.#version}/${url}`, config);
     return Api.#handleResponse(response);
   }
 
   static async getRawResponse(url, config) {
-    const response = await ApiInstance.get(`${url}`, config);
+    const response = await ApiInstance.get(`${this.#version}/${url}`, config);
     return Api.#handleResponse(response);
   }
 
   static async post(url, data, config) {
-    const response = await ApiInstance.post(`${url}`, data, config);
+    const response = await ApiInstance.post(
+      `${this.#version}/${url}`,
+      data,
+      config
+    );
 
     return Api.#handleResponse(response);
   }
 
   static async put(url, data, config) {
-    const response = await ApiInstance.put(`${url}`, data, config);
+    const response = await ApiInstance.put(
+      `${this.#version}/${url}`,
+      data,
+      config
+    );
 
     return Api.#handleResponse(response);
   }

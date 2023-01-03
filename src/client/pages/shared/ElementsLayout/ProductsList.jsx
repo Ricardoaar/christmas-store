@@ -45,7 +45,7 @@ export const ListProducts = ({
 };
 
 ListProducts.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
   price: PropTypes.number,
   category: PropTypes.shape({

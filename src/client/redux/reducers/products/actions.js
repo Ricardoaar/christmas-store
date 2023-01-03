@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import Api from "../../../../api/ApiInstance";
 
-export const FETCH_USERS = "@users/fetchUsers";
+export const FETCH_USERS = "@products/fetchProducts";
 
-const fakePromise = async () =>
-  new Promise(resolve => {
+export const fakePromise = async () => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
         results: [
@@ -91,8 +92,18 @@ const fakePromise = async () =>
       });
     }, 1000);
   });
+};
 
-export const fetchProducts = createAsyncThunk(FETCH_USERS, async () => {
-  // const response = await ApiInstance.get("/products");
-  return await fakePromise();
-});
+export const fetchProductsActions = async () => {
+  return await Api.get("products", {
+    params: {
+      offset: 0,
+      limit: 12
+    }
+  });
+};
+
+export const fetchProducts = createAsyncThunk(
+  FETCH_USERS,
+  fetchProductsActions
+);

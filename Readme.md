@@ -1,6 +1,8 @@
 # Super Store
 
-Made by @ricrdra
+<h3 style="color:#dc6565">
+Important: API IS MOCKED DUE TO ERROR 500 IN FAKE STORE D:
+</h3>
 
 This is a customizable and extensible store. It is made with React and Redux and using SSR strategy.
 
@@ -48,6 +50,7 @@ yarn build
 and change your .env file to
 
 ```
+
 ENV=production
 ```
 

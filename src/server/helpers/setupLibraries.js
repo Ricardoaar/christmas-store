@@ -1,6 +1,7 @@
 require("@babel/register")({
   presets: ["@babel/preset-env", "@babel/preset-react"]
 });
+
 const dotenv = require("dotenv");
 
 require("asset-require-hook")({

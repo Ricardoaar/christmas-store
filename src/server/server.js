@@ -9,6 +9,8 @@ const app = express();
 
 setupServerByEnv(app, ENV);
 app.get("*", renderApp);
+
+app.get("/favicon.ico", (req, res) => res.status(204));
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });

@@ -14,6 +14,7 @@ const ListChildComponentsByLayout = {
 
 const HomePage = ({ products, fetchProducts }) => {
   useEffect(() => {
+    // If cache is applied in backend
     fetchProducts();
   }, []);
   return (

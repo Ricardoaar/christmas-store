@@ -47,7 +47,7 @@ const CardLayout = ({
             <Paragraph>{`$${price} MXN`}</Paragraph>
           </Stack>
         </Stack>
-        <ComplexIcon icon={"star"} />
+        {/*<ComplexIcon icon={"star"} />*/}
       </Card.Footer>
     </Card>
   );

@@ -25,7 +25,7 @@ export const ListProducts = ({
         <Paragraph size={"sm"} color={"secondary"}>
           {description}
         </Paragraph>
-        <ComplexIcon icon={"star"} />
+        {/*<ComplexIcon icon={"star"} />*/}
       </Stack>
       <Container className={"product__image__container--list"}>
         {images.map(image => {

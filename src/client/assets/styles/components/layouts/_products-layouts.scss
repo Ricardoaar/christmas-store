@@ -2,6 +2,10 @@
   &__item {
     width: 100%;
 
+    &__header--card {
+      padding: 1rem
+    }
+
     &__body--card {
       padding: 0;
     }

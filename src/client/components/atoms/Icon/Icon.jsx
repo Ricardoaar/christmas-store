@@ -2,8 +2,14 @@ import React from "react";
 import withTextClassname from "@client/hocs/withTextClassname/withTextClassname";
 import PropTypes from "prop-types";
 
-const Icon = ({ className }) => {
-  return <i data-testid={"icon-component"} className={`icon ${className}`} />;
+const Icon = ({ className, ...iconProps }) => {
+  return (
+    <i
+      {...iconProps}
+      data-testid={"icon-component"}
+      className={`icon ${className}`}
+    />
+  );
 };
 
 const IconComponent = withTextClassname(Icon);

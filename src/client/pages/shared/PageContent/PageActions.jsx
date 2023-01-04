@@ -13,7 +13,8 @@ import { connect } from "react-redux";
 import {
   setFilter,
   setLayout,
-  setSortBy
+  setSortBy,
+  setSortDirection
 } from "@client/redux/reducers/app/actions";
 import ComplexIcon from "@components/molecules/ComplexIcon/ComplexIcon";
 import PropTypes from "prop-types";
@@ -44,13 +45,17 @@ const PageContent = ({
   layout,
   setSortBy,
   setFilter,
-  setLayout
+  setLayout,
+  sortDirection,
+  setSortDirection
 }) => {
   const { theme, setTheme } = useContext(ThemeContext);
   const { className: themeIcon } = useFontAwesomeIconClass(
     getIconPerTheme(theme)
   );
-  const { className: sortByIcon } = useFontAwesomeIconClass("arrow-down");
+  const { className: sortByIcon } = useFontAwesomeIconClass(
+    sortDirection === "asc" ? "arrow-up" : "arrow-down"
+  );
 
   const pageLayouts = useMemo(
     () => [
@@ -86,6 +91,7 @@ const PageContent = ({
             color={"secondary"}
             icon={<IconComponent className={themeIcon} />}
           />
+
           <Stack direction={"horizontal"} type={"x-wide"}>
             <TextInput
               size={"sm"}
@@ -101,7 +107,15 @@ const PageContent = ({
             <DropdownList
               options={sortDropdownOptions}
               placeholder={"Sort by"}
-              icon={<IconComponent className={sortByIcon} />}
+              icon={
+                <IconComponent
+                  onClick={e => {
+                    e.stopPropagation();
+                    setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+                  }}
+                  className={sortByIcon}
+                />
+              }
               value={sortBy}
               onChange={setSortBy}
             />
@@ -117,7 +131,7 @@ const PageContent = ({
           })}
         </Stack>
         {typeof children === "function"
-          ? children({ layout, sortBy, filter })
+          ? children({ layout, sortBy, filter, sortDirection })
           : children}
       </Container>
     </>
@@ -138,13 +152,15 @@ const mapStateToProps = state => {
   return {
     sortBy: state.app.sortBy,
     filter: state.app.filter,
-    layout: state.app.layout
+    layout: state.app.layout,
+    sortDirection: state.app.sortDirection
   };
 };
 
 const ConnectedPageContent = connect(mapStateToProps, {
   setSortBy,
   setFilter,
-  setLayout
+  setLayout,
+  setSortDirection
 })(PageContent);
 export default ConnectedPageContent;

@@ -42,8 +42,12 @@ const CardLayout = ({
             type={StackTypes.normal}
             noChildContainer
           >
-            <Paragraph>{description}</Paragraph>
-            <Paragraph>{category.title}</Paragraph>
+            <Paragraph color={"secondary"} weight={"light"}>
+              {description}
+            </Paragraph>
+            <Paragraph color={"primary"} weight={"bold"}>
+              {category.name}
+            </Paragraph>
             <Paragraph>{`$${price} MXN`}</Paragraph>
           </Stack>
         </Stack>

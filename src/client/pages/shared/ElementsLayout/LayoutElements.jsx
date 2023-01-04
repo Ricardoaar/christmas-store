@@ -1,7 +1,9 @@
-import React, { useMemo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Stack from "@components/layouts/Stack/Stack";
 import { StackTypes } from "@components/layouts/Stack/Stack.types";
+import withSortBy from "@client/hocs/withSortBy/withSortBy";
+import withEntityFilter from "@client/hocs/withEntityFilter/withEntityFIlter";
 
 const ListLayout = ({ children, className }) => {
   return (
@@ -75,56 +77,6 @@ LayoutElements.propTypes = {
   childComponentsByLayout: PropTypes.object.isRequired
 };
 
-const withEntityFiler = Component => {
-  const ComponentWithEntityFilter = ({
-    entities = [],
-    filter,
-    criteria = "title",
-    ...props
-  }) => {
-    const filteredEntities = useMemo(() => {
-      if (!filter) return entities;
+const SortableLayout = withEntityFilter(withSortBy(LayoutElements));
 
-      return [...entities].filter(entity => {
-        const regex = new RegExp(filter, "i");
-        return regex.test(entity[criteria]);
-      });
-    }, [criteria, entities, filter]);
-
-    return <Component {...props} entities={filteredEntities} />;
-  };
-  ComponentWithEntityFilter.propTypes = {
-    entities: PropTypes.array.isRequired,
-    filter: PropTypes.string,
-    criteria: PropTypes.string
-  };
-
-  return ComponentWithEntityFilter;
-};
-
-const withSortBy = Component => {
-  const ComponentWithSortBy = ({ entities = [], sortBy, ...props }) => {
-    const sortedEntities = useMemo(() => {
-      if (!sortBy) return entities;
-
-      return [...entities].sort((a, b) => {
-        if (a[sortBy] > b[sortBy]) {
-          return 1;
-        }
-        if (a[sortBy] < b[sortBy]) {
-          return -1;
-        }
-        return 0;
-      });
-    }, [entities, sortBy]);
-    return <Component {...props} entities={sortedEntities} />;
-  };
-  ComponentWithSortBy.propTypes = {
-    entities: PropTypes.array.isRequired,
-    sortBy: PropTypes.string
-  };
-
-  return ComponentWithSortBy;
-};
-
-export default withSortBy(withEntityFiler(LayoutElements));
+export default SortableLayout;

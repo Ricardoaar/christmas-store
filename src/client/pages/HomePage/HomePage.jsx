@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { ListProducts } from "@pages/shared/ElementsLayout/ProductsList";
 import { homePageTypes } from "@pages/HomePage/HomePage.types";
 import CardLayout from "@pages/shared/ElementsLayout/CardLayout";
+import Heading from "@components/molecules/Heading/Heading";
 
 const ListChildComponentsByLayout = {
   list: ListProducts,
@@ -21,23 +22,25 @@ const HomePage = ({ products, fetchProducts }) => {
   return (
     <>
       <PageContent>
-        {({ layout, sortBy, filter }) => {
+        {({ layout, sortBy, filter, sortDirection }) => {
           return (
-            <LayoutElements
-              className={`product__layout--${layout}`}
-              filter={filter}
-              sortBy={sortBy}
-              entities={products.entities}
-              layout={layout}
-              childComponentsByLayout={ListChildComponentsByLayout}
-            />
+            <>
+              <LayoutElements
+                className={`product__layout--${layout}`}
+                filter={filter}
+                sortBy={sortBy}
+                entities={products.entities}
+                layout={layout}
+                childComponentsByLayout={ListChildComponentsByLayout}
+                asc={sortDirection === "asc"}
+              />
+            </>
           );
         }}
       </PageContent>
     </>
   );
 };
-
 export const onLoadHomePage = store => {
   return store.dispatch(fetchProducts());
 };

@@ -1,6 +1,6 @@
 @mixin within-theme($themes) {
   @each $theme, $map in $themes {
-    .theme-#{$theme} & {
+    .#{$theme} & {
       $theme-map: () !global;
 
       @each $key, $submap in $map {
@@ -16,7 +16,7 @@
 
 @mixin append-theme($themes) {
   @each $theme, $map in $themes {
-    &.theme-#{$theme} {
+    &.#{$theme} {
       $theme-map: () !global;
 
       @each $key, $submap in $map {
@@ -29,8 +29,6 @@
     }
   }
 }
-
-
 
 
 @function to-rgba($color, $alpha) {

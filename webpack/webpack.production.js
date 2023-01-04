@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 // Utils
 const path = require("path");
 const { merge } = require("webpack-merge");
@@ -37,6 +37,17 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       filename: "assets/app-[hash].css"
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(
+            __dirname,
+            "../src/client/assets/static/favicon.ico"
+          ),
+          to: "favicon.ico"
+        }
+      ]
     })
   ],
   optimization: {

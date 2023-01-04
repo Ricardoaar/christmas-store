@@ -65,7 +65,7 @@ const renderFullPage = (location, store, hashManifest) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Super Random Store</title>
         <meta name="description" content="Super random store! Find a lot of diferents products, be care, each reload they change!"/>
-        
+          <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <link rel="stylesheet" href="${mainStylesLocation}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +73,7 @@ const renderFullPage = (location, store, hashManifest) => {
       <script src="https://kit.fontawesome.com/681847d319.js" crossorigin="anonymous"></script>
         
       </head>
-      <body class="main-background theme-christmas">
+      <body class="main-background christmas">
       <script>
           window.__PRELOADED_STATE__ = ${preloadedState};
         </script>

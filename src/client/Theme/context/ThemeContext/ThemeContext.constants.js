@@ -1,6 +1,6 @@
 export const THEMES = {
-  christmas: "theme-christmas",
-  halloween: "theme-halloween"
+  christmas: "christmas",
+  halloween: "halloween"
 };
 export const initialThemeState = {
   theme: THEMES.christmas,

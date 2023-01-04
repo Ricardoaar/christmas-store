@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { ListProducts } from "@pages/shared/ElementsLayout/ProductsList";
 import { homePageTypes } from "@pages/HomePage/HomePage.types";
 import CardLayout from "@pages/shared/ElementsLayout/CardLayout";
-import Heading from "@components/molecules/Heading/Heading";
 
 const ListChildComponentsByLayout = {
   list: ListProducts,

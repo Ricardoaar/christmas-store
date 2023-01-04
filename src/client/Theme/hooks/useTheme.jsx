@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeContext } from "@client/../context/ThemeContext";
+import { ThemeContext } from "@client/Theme/context/ThemeContext";
 
 /**
  * @returns {object} - theme - The current theme | setTheme - Function to change the theme, it can only receive the values of the THEMES object

@@ -63,7 +63,9 @@ const renderFullPage = (location, store, hashManifest) => {
       <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Super Store</title>
+        <title>Super Random Store</title>
+        <meta name="description" content="Super random store! Find a lot of diferents products, be care, each reload they change!"/>
+        
         <link rel="stylesheet" href="${mainStylesLocation}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
